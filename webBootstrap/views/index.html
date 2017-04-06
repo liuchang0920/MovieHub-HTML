@@ -81,18 +81,18 @@
 	        <div class="modal-body" style="padding:40px 50px;">
 	          <form role="form">
 	            <div class="form-group">
-	              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-	              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+	              <label for="loginusername"><span class="glyphicon glyphicon-user"></span> Username</label>
+	              <input type="text" class="form-control" id="loginusername" placeholder="Enter email" name="cusname">
 	            </div>
 	            <div class="form-group">
-	              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-	              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+	              <label for="loginpassword"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+	              <input type="password" class="form-control" id="loginpassword" placeholder="Enter password" name="cuspassword">
 	            </div>
 	            <div class="checkbox">
 	              <label><input type="checkbox" value="" checked>Remember me</label>
 	              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Forgot <a href="#">Password?</a>
 	            </div>
-	              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+	              <button type="submit" class="btn btn-success btn-block" id="loginBtnajax"><span class="glyphicon glyphicon-off"></span> Login</button>
 	          </form>
 	        </div>
 	        <div class="modal-footer">
@@ -323,7 +323,24 @@
 		    $("#registerbtn").click(function(){
 		        $("#registerModal").modal();
 		    });
+
+		    $('#loginBtnajax').click(
+		    	function(){
+		    		alert("loginBtnajax");
+		    		//add listener: login register
+					$.ajax({
+					   type: "POST",
+					   url: 'http://104.194.82.160:5000/login',
+					   contentType: "application/json; charset=utf-8",
+        			   dataType: "json",
+					   data: {'cusname':'asdf', 'cuspassword':'123456' },
+					   success: function(msg){alert(msg);}
+					 });
+		    	}
+		    );
 		});
+
+		
 	</script>
 </body>
 </html>
