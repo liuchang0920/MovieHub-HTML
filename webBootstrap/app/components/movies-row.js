@@ -6,13 +6,14 @@ export default (data)=> {
         <div class="row">\
             <div class="col-sm-5 col-md-3" v-for="todo in movies">\
                 <div class="thumbnail">\
-                    <img src="image/movie-pic.svg" alt="...">\
+                    <a v-on:click="goToMovieDetail()" role="button" >\
+                        <img src="views/image/movie-pic.svg" alt="...">\
+                    </a>\
                     <div class="caption">\
                         <h3>Thumbnail label</h3>\
                         <p>{{todo.text}}</p>\
                         <p>\
                             <a v-on:click="goToMovieDetail()" class="btn btn-primary" role="button">Detail</a>\
-                            <a href="#" class="btn btn-default" role="button">Button</a>\
                         </p>\
                     </div>\
                 </div>\
@@ -24,7 +25,7 @@ export default (data)=> {
     };
     this.methods = {
         goToMovieDetail: ()=> {
-            console.log(this, this.$router);
+            // console.log(this, this.$router);
             router.push('movieDetail');
         }
     };
