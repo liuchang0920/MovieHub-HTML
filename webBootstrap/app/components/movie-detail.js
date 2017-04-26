@@ -1,5 +1,6 @@
 const movieDetail = {
-    template: '<!-- bread scrumb-->\
+    template: '<div class="movie-detail">\
+    <!-- bread scrumb-->\
     <ol class="breadcrumb">\
       <li><a href="#">Home</a></li>\
             <li><a href="">Genre</a></li>\
@@ -67,6 +68,7 @@ const movieDetail = {
                   <!--movie review charts-->\
                   <canvas id="movieReview"></canvas>\
               </div>\
+        </div>\
     </div>'
 };
 

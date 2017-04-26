@@ -1,5 +1,5 @@
 import Vue from './../vue';
-
+import router from './../router/index';
 export default (data)=> {
     this.template = '<div class="col-md-10">\
         <h1>{{ title }}</h1>\
@@ -18,9 +18,15 @@ export default (data)=> {
                 </div>\
             </div>\
         </div>\
-    </div>',
-    this.data= ()=> {
+    </div>';
+    this.data = ()=> {
         return data;
-    }
+    };
+    this.methods = {
+        goToMovieDetail: ()=> {
+            console.log(this, this.$router);
+            router.push('movieDetail');
+        }
+    };
     return this;
 };
