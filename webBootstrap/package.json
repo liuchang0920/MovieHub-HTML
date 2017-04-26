@@ -8,7 +8,7 @@
     "dev-run": "nodemon app.js dev",
     "dist-run": "./node_modules/.bin/webpack | node app.js dist"
   },
-  "author": "XiaohangSu",
+  "author": "MovieHub",
   "license": "MIT",
   "devDependencies": {
     "css-loader": "^0.26.1",

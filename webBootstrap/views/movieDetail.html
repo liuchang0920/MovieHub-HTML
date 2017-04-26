@@ -1,287 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Action Movie </title>
-		<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Action Movie </title>
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-	<link rel="stylesheet" href="<%=staticPath%>main.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="<%=staticPath%>main.min.css">
 
-	<!-- add gallery plugin css-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.css">
+    <!-- add gallery plugin css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.css">
 
 
 </head>
 <body>
-	<!--navbar-->
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="#">Movie Hub</a>
-	    </div>
+    <!-- bread scrumb-->
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="">Genre</a></li>
+      <li><a href="">Action</a></li>
+      <li>Movie Name</li>
+    </ol>
+    <!-- action movies-->
+    <div class="col-md-6 col-md-push-1">
+        <div>
+            <div class="col-md-10"><h1>Movie Name</h1></div>
+            <div class="col-md-1" style="padding-bottom: 0px; margin-bottom: 0px; padding-top: 40px;"><a href="" >Genre</a>
+            </div>
+            <div class="row">
+                <!-- movie trailers and screen shots -->
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/g50VrZbkxEk" frameborder="0" allowfullscreen></iframe>
+                <br>
+                <div class="offset-md-2 col-md-8">
+                    <h4>ScreentShots</h4>
+                    <div class="row">
+                        <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
+                            <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
+                        </a>
+                        <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
+                            <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
+                        </a>
+                        <a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
+                            <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
+                        </a>
+                        <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
+                            <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
+                        </a>
+                        <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
+                            <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
+                        </a>
+                        <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
+                            <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h4>Rate this Movie: <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span></h4>
+            </div>
+            <div class="row">
+                <h4>Reviews</h4>
+                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
+            </div>
+        </div>
+    </div>
 
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-	<!--         <li><a href="#">Link</a></li> -->
-	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Comedy</a></li>
-	            <li><a href="#">Documentary</a></li>
-	            <!-- <li role="separator" class="divider"></li> -->
-	           <!--  <li><a href="#">Separated link</a></li>
-	            <li role="separator" class="divider"></li> -->
-	            <li><a href="#">Horror</a></li>
-	            <li><a href="#">Sport</a></li>
-	          </ul>
-	        </li>
-	      </ul>
-	      <form class="nav navbar-nav navbar-form">
-	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Search a movie" size="20">
-	        </div>
-	        <button type="submit" class="btn btn-default">Search</button>
-	      </form>
-	      <ul class="nav navbar-nav navbar-right">
-	        <li><a id="loginbtn">Login</a></li>
-	        <li><a id="registerbtn">Register</a></li>
-	        <!-- <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li role="separator" class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	          </ul>
-	        </li> -->
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
+    <div class="col-md-4 col-md-push-1" style="padding-top: 40px;">
+    <!-- movie information-->
+        <div class="panel">
+            <h3>Movie Detail</h3>
+            <p><b>Year:</b>  2017</p>
+            <p><b>Genre:</b>  <a href="">Sport</a>, <a href="">Comedy</a>, <a href="">Horror</a></p>
+            <p><b>Star:</b>  Tom, Jerry, Amy</p>
+            <p><b>Star:</b>  Tom, Jerry, Amy</p>
+            <p><b>Star:</b>  Tom, Jerry, Amy</p>
+            <p><b>Star:</b>  Tom, Jerry, Amy</p>
+            <p><b>Star:</b>  Tom, Jerry, Amy</p>
+        </div>
+        <br><br><br><br>
+        <div>
+            <h4>Movie Views</h4>
+            <!--movie review charts-->
+            <canvas id="movieReview"></canvas>
+        </div>
+    </div>
 
-	<!--login modal-->
-	  <div class="modal fade" id="loginModal" role="dialog">
-	    <div class="modal-dialog">
-	    
-	      <!-- Modal content-->
-	      <div class="modal-content">
-	        <div class="modal-header" style="padding:35px 50px;">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
-	        </div>
-	        <div class="modal-body" style="padding:40px 50px;">
-	          <form role="form">
-	            <div class="form-group">
-	              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-	              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-	            </div>
-	            <div class="form-group">
-	              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-	              <input type="text" class="form-control" id="psw" placeholder="Enter password">
-	            </div>
-	            <div class="checkbox">
-	              <label><input type="checkbox" value="" checked>Remember me</label>
-	              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Forgot <a href="#">Password?</a>
-	            </div>
-	              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
-	          </form>
-	        </div>
-	        <div class="modal-footer">
-<!-- 	          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-	          <p>Not a member? <a href="#">Sign Up</a></p>
-	           -->
-	        </div>
-	      </div>
-	      
-	    </div>
-	  </div> 
+    <script src='<%=staticPath%>bundle.js'></script>
+    <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	  <!--register modal-->
-	  <div class="modal fade" id="registerModal" role="dialog">
-	    <div class="modal-dialog">
-	    
-	      <!-- Modal content-->
-	      <div class="modal-content">
-	        <div class="modal-header" style="padding:35px 50px;">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4><span class="glyphicon glyphicon-lock"></span> Register</h4>
-	        </div>
-	        <div class="modal-body" style="padding:40px 50px;">
-	          <form role="form">
-	            <div class="form-group">
-	              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-	              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-	            </div>
-	            <div class="form-group">
-	              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Email</label>
-	              <input type="email" class="form-control" id="usrname" placeholder="Enter email">
-	            </div>
-	            <div class="form-group">
-	              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-	              <input type="text" class="form-control" id="psw" placeholder="Enter password">
-	            </div>
-	             <div class="form-group">
-	              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Repeat Password</label>
-	              <input type="text" class="form-control" id="psw" placeholder="Enter password">
-	            </div>
+    <!--script for login and register modal-->
+    <script>
+        $(document).ready(function(){
+            $("#loginbtn").click(function(){
+                $("#loginModal").modal();
+            });
+            $("#registerbtn").click(function(){
+                $("#registerModal").modal();
+            });
+        });
+    </script>
+    <!--add gallery plguin js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.min.js"></script>
 
-	              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Register</button>
-	          </form>
-	        </div>
-	        <div class="modal-footer">
-	         <!--  <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-	          <p>Not a member? <a href="#">Sign Up</a></p>
-	          <p>Forgot <a href="#">Password?</a></p> -->
-	        </div>
-	      </div>
-	      
-	    </div>
-	  </div> 
-	  <!--should there be a picture or some thing-->
-	  <div class="col-md-12" style="background: 'image/MovieHub-logo.png' ; background-size: 'contain' ;height: 200px">
-	  </div>
-	<!-- bread scrumb-->
-	<ol class="breadcrumb">
-	  <li><a href="#">Home</a></li>
-	  <li><a href="">Genre</a></li>
-	  <li><a href="">Action</a></li>
-	  <li>Movie Name</li>
-	</ol>
-	<!-- action movies-->
-	<div class="col-md-6 col-md-push-1">
-		<div>
-			<div class="col-md-10"><h1>Movie Name</h1></div>
-			<div class="col-md-1" style="padding-bottom: 0px; margin-bottom: 0px; padding-top: 40px;"><a href="" >Genre</a>
-			</div>
-			<div class="row">
-				<!-- movie trailers and screen shots -->
-				<iframe width="100%" height="315" src="https://www.youtube.com/embed/g50VrZbkxEk" frameborder="0" allowfullscreen></iframe>
-				<br>
-				<div class="offset-md-2 col-md-8">
-					<h4>ScreentShots</h4>
-			        <div class="row">
-			            <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
-			                <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
-			            </a>
-			            <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
-			                <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
-			            </a>
-			            <a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
-			                <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-			            </a>
-			            <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
-			                <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
-			            </a>
-			            <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
-			                <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
-			            </a>
-			            <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail col-sm-4">
-			                <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
-			            </a>
-			        </div>
-			    </div>
-			</div>
-			<div class="row">
-				<h4>Rate this Movie: <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span></h4>
-			</div>
-			<div class="row">
-				<h4>Reviews</h4>
-				<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
-			</div>
-		</div>
-	</div>
+    <!-- add movie view graph plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
 
-	<div class="col-md-4 col-md-push-1" style="padding-top: 40px;">
-	<!-- movie information-->
-		<div class="panel">
-			<h3>Movie Detail</h3>
-			<p><b>Year:</b>  2017</p>
-			<p><b>Genre:</b>  <a href="">Sport</a>, <a href="">Comedy</a>, <a href="">Horror</a></p>
-			<p><b>Star:</b>  Tom, Jerry, Amy</p>
-			<p><b>Star:</b>  Tom, Jerry, Amy</p>
-			<p><b>Star:</b>  Tom, Jerry, Amy</p>
-			<p><b>Star:</b>  Tom, Jerry, Amy</p>
-			<p><b>Star:</b>  Tom, Jerry, Amy</p>
-		</div>
-		<br><br><br><br>
-		<div>
-			<h4>Movie Views</h4>
-			<!--movie review charts-->
-			<canvas id="movieReview"></canvas>
-		</div>
-	</div>
-	<div class="footer col-md-12" style="border-top-style: solid;">
-		<p style="text-align: center;">
-			Modified by Movie Hub
-		</p>
-	</div>
-
-	<script src='<%=staticPath%>bundle.js'></script>
-	<script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-	<!--script for login and register modal-->
-	<script>
-		$(document).ready(function(){
-		    $("#loginbtn").click(function(){
-		        $("#loginModal").modal();
-		    });
-		    $("#registerbtn").click(function(){
-		        $("#registerModal").modal();
-		    });
-		});
-	</script>
-	<!--add gallery plguin js-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.min.js"></script>
-
-	<!-- add movie view graph plugin-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
-	<script>
-		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
-		    event.preventDefault();
-		    $(this).ekkoLightbox();
-		});
-
-		var ctx = document.getElementById('movieReview').getContext('2d');
-		var myChart = new Chart(ctx, {
-		  type: 'line',
-		  data: {
-		    labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-		    datasets: [{
-		      label: 'apples',
-		      data: [12, 19, 3, 17, 6, 3, 7],
-		      backgroundColor: "rgba(153,255,51,0.6)"
-		    }, {
-		      label: 'oranges',
-		      data: [2, 29, 5, 5, 2, 3, 10],
-		      backgroundColor: "rgba(255,153,0,0.6)"
-		    }]
-		  }
-		});
-	</script>
-	<!--add facebook comment plugins-->
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "https:MovieHub-logo.png//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=727244590785229";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+        var ctx = document.getElementById('movieReview').getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+            datasets: [{
+              label: 'apples',
+              data: [12, 19, 3, 17, 6, 3, 7],
+              backgroundColor: "rgba(153,255,51,0.6)"
+            }, {
+              label: 'oranges',
+              data: [2, 29, 5, 5, 2, 3, 10],
+              backgroundColor: "rgba(255,153,0,0.6)"
+            }]
+          }
+        });
+    </script>
+    <!--add facebook comment plugins-->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https:MovieHub-logo.png//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=727244590785229";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>

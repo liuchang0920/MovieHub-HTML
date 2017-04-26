@@ -13,7 +13,7 @@ if (CONFIG === 'dev') {
 
 router.get('/', (ctx, next)=> {
     return ctx.render('../views/index.html', {
-    	staticPath: STATIC_PATH
+        staticPath: STATIC_PATH
     });
 });
 
