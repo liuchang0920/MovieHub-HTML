@@ -17,5 +17,4 @@ router.get('/', (ctx, next)=> {
     });
 });
 
-
 module.exports = router;

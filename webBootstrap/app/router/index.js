@@ -1,5 +1,5 @@
-import Vue               from './../vue';
-import VueRouter         from './../vue-router';
+import Vue               from './../lib/vue';
+import VueRouter         from './../lib/vue-router';
 import movieDetail       from './../components/movie-detail';
 import indexComponent    from './../components/index-view';
 

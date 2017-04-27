@@ -1,3 +1,6 @@
+let user = {
+};
+
 export default {
     template: '<!--navbar-->\
         <nav class="navbar navbar-default">\
@@ -43,5 +46,11 @@ export default {
                     </ul>\
                     </div>\
                     </div>\
-    </nav>'
+    </nav>',
+    data: ()=> {
+        console.log(user);
+        return {
+            user: user
+        }
+    }
 };
