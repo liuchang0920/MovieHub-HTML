@@ -2,6 +2,24 @@ import navBarComponent   from './nav-bar';
 import moviesRow from './movies-row';
 import carouselComponent from './carousel';
 import footerComponent   from './footer';
+let $ = require('../lib/jquery');
+let newestMovies = [];
+
+// get 10 Newest Movie
+$.ajax({
+    method:'POST',
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    crossDomain: true,
+    url:'http://104.194.82.160:5000/db/getNewestMovies',
+    data: JSON.stringify({count: 10}),
+    success: (data)=>{
+        console.log(data);
+    },
+    error: (err)=> {
+        console.log('Error: ', err);
+    }
+});
 
 export default {
     template:'<div class="index-view">\
@@ -151,16 +169,11 @@ export default {
         'nav-bar':navBarComponent,
         'carousel': carouselComponent,
         'footer-component': footerComponent,
-        'recommend-movies-row': moviesRow({
+        'recommend-movies-row': new moviesRow({
             title: 'Recommend Movies',
-            movies: [
-            {text: 'test'},
-            {text: 'test'},
-            {text: 'test'},
-            {text: 'test'}
-            ]
+            movies: newestMovies
         }),
-        'newest-movies-row': moviesRow({
+        'newest-movies-row': new moviesRow({
             title: 'Newest Movies',
             movies: [
             {text: 'test'},
