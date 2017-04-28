@@ -1,3 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 #index-login-forget-password {
     float: right;
+}
+
+.row-movie {
+    display: inline-block;
+    .row-movie-title {
+        overflow : hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .row-movie-description {
+        overflow : hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .thumbnail {
+        img {
+            width: 100%;
+        }
+    }
+}
+
+/* tiny devices (tablets, 768px down) */
+@media (min-width: 0px) {
+    .row-movie {
+        img {
+            height: 500px;
+        }
+        
+    }
+}
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .row-movie {
+        img {
+            height: 500px;
+        }
+        
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 922px) { 
+    .row-movie {
+        img {
+            height: 245px;
+        }
+        
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .row-movie {
+        img {
+            height: 400px;
+        }
+
+    }
 }

@@ -7,23 +7,34 @@ import registerComponent from './register-modal'
 import categoryComponent from './category-modal'
 
 let $ = require('../lib/jquery');
-let newestMovies = [];
 
-// get 10 Newest Movie
-$.ajax({
-    method:'POST',
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    crossDomain: true,
-    url:'http://104.194.82.160:5000/db/getNewestMovies',
-    data: JSON.stringify({count: 10}),
-    success: (data)=>{
-        console.log(data);
-    },
-    error: (err)=> {
-        console.log('Error: ', err);
-    }
-});
+let getNewestMovies = (cb)=>{
+    // get 10 Newest Movie
+    $.ajax({
+        method:'POST',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        crossDomain: true,
+        url:'http://104.194.82.160:5000/db/getNewestMovies',
+        data: JSON.stringify({count: 10}),
+        success: (data)=>{
+            let newestMovies = data.instances;
+            newestMovies.map((movie)=> {
+                movie.movScreenshotUrl = movie.movScreenshotUrl.split('|');
+                movie.genre = movie.genre.split('|');
+                movie.actor = movie.actor.split('|');
+                movie.movScreenshotUrl.pop();
+                movie.genre.pop();
+                movie.actor.pop();
+            });
+            cb(newestMovies);
+        },
+        error: (err)=> {
+            console.log('Error: ', err);
+        }
+    });
+};
+
 
 export default {
     template:'<div class="index-view">\
@@ -34,7 +45,6 @@ export default {
         <register-modal></register-modal>\
         <!--carousel-->\
         <carousel></carousel>\
-        <recommend-movies-row></recommend-movies-row>\
         <newest-movies-row></newest-movies-row>\
         <div class="col-md-2" style="padding-top: 40px;">\
         <!-- panel movie category-->\
@@ -94,18 +104,11 @@ export default {
         'category-modal' : categoryComponent,
         'carousel': carouselComponent,
         'footer-component': footerComponent,
-        'recommend-movies-row': new moviesRow({
-            title: 'Recommend Movies',
-            movies: newestMovies
-        }),
-        'newest-movies-row': new moviesRow({
-            title: 'Newest Movies',
-            movies: [
-            {text: 'test'},
-            {text: 'test'},
-            {text: 'test'},
-            {text: 'test'}
-            ]
+        // 'recommend-movies-row': new moviesRow(getNewestMovies, {
+        //     title: 'Recommend Movies'
+        // }),
+        'newest-movies-row': new moviesRow(getNewestMovies, {
+            title: 'Newest Movies'
         })
     }
 };
