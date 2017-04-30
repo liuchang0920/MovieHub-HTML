@@ -2,18 +2,18 @@ import Vue from './../lib/vue';
 import router from './../router/index';
 
 class MovieRow {
-    constructor(data={}, methods={}) {
+    constructor(onCreatedMethod, data={}, methods={}) {
         this.template = '<div class="col-md-10">\
-            <h1>{{ title }}</h1>\
+            <h1 v-on:click="goToMovieDetail()">{{ title }}</h1>\
             <div class="row">\
-                <div class="col-sm-5 col-md-3" v-for="todo in movies">\
+                <div class="col-sm-4 col-md-3 col-lg-3 row-movie" v-for="movie in movies">\
                     <div class="thumbnail">\
-                        <img src="image/movie-pic.svg" alt="...">\
+                        <img :src="movie.movScreenshotUrl[0]" alt="...">\
                         <div class="caption">\
-                            <h3>Thumbnail label</h3>\
-                            <p>{{todo.text}}</p>\
+                            <h3 class="row-movie-title">{{movie.movname}}</h3>\
+                            <p class="row-movie-description">{{movie.description}}</p>\
                             <p>\
-                                <a v-on:click="goToMovieDetail()" class="btn btn-primary" role="button">Detail</a>\
+                                <a v-on:click="goToMovieDetail(movie)" class="btn btn-primary" role="button">Detail</a>\
                                 <a href="#" class="btn btn-default" role="button">Button</a>\
                             </p>\
                         </div>\
@@ -22,11 +22,19 @@ class MovieRow {
             </div>\
         </div>';
         this.data = ()=> {
+            data.movies = {};
             return data;
+        };
+        this.created = function() {
+                onCreatedMethod((movies)=>{
+                this.movies = movies;
+            });
         }
-        this.methods = methods;
-        this.methods.goToMovieDetail = ()=> {
-            router.push('movieDetail');
+        this.methods = {
+            goToMovieDetail: function(movie) {
+                console.log(movie);
+                router.push({path: 'movieDetail', query: movie});
+            }
         };
         return this;
     }
