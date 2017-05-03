@@ -1,3 +1,5 @@
+import router from './../router/index'
+
 let user = {
 };
 
@@ -23,14 +25,11 @@ export default {
                         <li class="dropdown">\
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>\
                             <ul class="dropdown-menu">\
-                                <li><a href="#">Action</a></li>\
-                                <li><a href="#">Comedy</a></li>\
-                                <li><a href="#">Documentary</a></li>\
-                                <!-- <li role="separator" class="divider"></li> -->\
-                                <!--  <li><a href="#">Separated link</a></li>\
-                                <li role="separator" class="divider"></li> -->\
-                                <li><a href="#">Horror</a></li>\
-                                <li><a href="#">Sport</a></li>\
+                                <li><router-link to="/genre/Action">Action</router-link></li>\
+                                <li><router-link to="/genre/Comedy">Comedy</router-link></li>\
+                                <li><router-link to="/genre/Documentory">Documentation</router-link></li>\
+                                <li><router-link to="/genre/Honor">Honor</router-link></li>\
+                                <li><router-link to="/genre/Sport">Sport</router-link></li>\
                             </ul>\
                         </li>\
                     </ul>\
@@ -50,7 +49,10 @@ export default {
     data: ()=> {
         console.log(user);
         return {
-            user: user
+            user: user,
+            category:'test'
         }
+    },
+    methods: {
     }
 };
