@@ -25,11 +25,11 @@ export default {
                         <li class="dropdown">\
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>\
                             <ul class="dropdown-menu">\
-                                <li><router-link to="/genre/Action">Action</router-link></li>\
+                                <li><router-link to="/genre/Action" exact>Action</router-link></li>\
                                 <li><router-link to="/genre/Comedy">Comedy</router-link></li>\
-                                <li><router-link to="/genre/Documentory">Documentation</router-link></li>\
-                                <li><router-link to="/genre/Honor">Honor</router-link></li>\
-                                <li><router-link to="/genre/Sport">Sport</router-link></li>\
+                                <li><router-link to="/genre/Documentary">Documentary</router-link></li>\
+                                <li><router-link to="/genre/Horror">Horror</router-link></li>\
+                                <li><router-link to="/genre/Romance">Romance</router-link></li>\
                             </ul>\
                         </li>\
                     </ul>\

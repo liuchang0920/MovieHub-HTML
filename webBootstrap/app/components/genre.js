@@ -7,15 +7,20 @@ import registerComponent from './register-modal'
 import categoryComponent from './category-modal'
 import router            from '../router/index';
 let $ = require('../lib/jquery');
-sessionStorage.setItem('genreid',-1);
-let firstid = 0;
+// sessionStorage.setItem('genreid',-1);
+let firstid = -1;
 let lastid = 0;
-
+let page = 1;
 let movieRowData = {
     title: 'Test'
 };
+document.getElementById('app').scrollIntoView();
 
-let getGenreMovies = (cb, id=-1)=> {
+let getGenreMovies = (cb, id=firstid)=> {
+    if (page==1){
+        id=-1;
+    }
+    // console.log(page);
     // get 10 Newest Movie
     movieRowData.title = router.app.$route.params.genre;
     $.ajax({
@@ -35,6 +40,7 @@ let getGenreMovies = (cb, id=-1)=> {
                     movie.genre.pop();
                     movie.actor.pop();
             });
+            firstid = newestMovies[0].movid;
             lastid = newestMovies[11].movid;
             cb(newestMovies);
         },
@@ -104,17 +110,15 @@ export default {
                         </div>\
                 </div>\
                 <div class="col-md-10" >\
-                        <div style="text-align: center">\
-                            <a v-on:click="nextPage()">Previous Page</a>\
-                            <a v-on:click="nextPage()">Next Page</a>\
-                        </div>\
+                    <div style="text-align: center">\
+                    <nav aria-label="...">\
+                        <ul class="pager">\
+                            <li><a v-on:click="previousPage()">Previous</a></li>\
+                            <li><a v-on:click="nextPage()">Next</a></li>\
+                        </ul>\
+                    </nav>\
+                    </div>\
                 </div>\
-                <nav aria-label="...">\
-            <ul class="pager">\
-    <li><a href="#">Previous</a></li>\
-    <li><a href="#">Next</a></li>\
-  </ul>\
-  </nav>\
                 <footer-component></footer-component>\
         </div>',
         data: function() {
@@ -131,18 +135,30 @@ export default {
                 'newest-movies-row': new moviesRow(getGenreMovies, movieRowData)
         },
         watch:{
-
+                '$route' (to, from) {
+                    location.reload();
+                    page=1;
+                }
         },
         methods:{
 
             nextPage() {
-                sessionStorage.setItem('genreid',lastid);
-                console.log(router.app._route.path);
+                // sessionStorage.setItem('genreid',lastid);
+                page=page+1;
                 this.$children[4].$data.movies = [];
                 getGenreMovies((movies)=> {
                     this.$children[4].$data.movies = movies;
                 }, lastid);
                 document.getElementById('app').scrollIntoView();
+            },
+            previousPage() {
+                if (page!=1){
+                    page=page-1;
+                    this.$children[4].$data.movies = [];
+                    getGenreMovies((movies)=> {
+                        this.$children[4].$data.movies = movies;
+                    }, firstid);
+                    document.getElementById('app').scrollIntoView();}
             }
         }
 };
