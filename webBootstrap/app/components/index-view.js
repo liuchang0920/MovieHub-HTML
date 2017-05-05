@@ -16,7 +16,7 @@ let getNewestMovies = (cb)=>{
         dataType: 'json',
         crossDomain: true,
         url:'http://104.194.82.160:5000/db/getNewestMovies',
-        data: JSON.stringify({count: 10}),
+        data: JSON.stringify({count: 12}),
         success: (data)=>{
             let newestMovies = data.instances;
             newestMovies.map((movie)=> {
