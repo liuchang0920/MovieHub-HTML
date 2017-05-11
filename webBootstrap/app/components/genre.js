@@ -52,7 +52,6 @@ let getGenreMovies = (cb, id=firstid)=> {
 
 export default {
         template:'<div class="index-view">\
-                <nav-bar></nav-bar>\
                 <!--login modal-->\
                 <login-modal></login-modal>\
                 <!--register modal-->\
@@ -119,19 +118,16 @@ export default {
                     </nav>\
                     </div>\
                 </div>\
-                <footer-component></footer-component>\
         </div>',
         data: function() {
             return {
             };
         },
         components: {
-                'nav-bar':navBarComponent,
                 'login-modal': loginComponent,
                 'register-modal': registerComponent,
                 'category-modal' : categoryComponent,
                 'carousel': carouselComponent,
-                'footer-component': footerComponent,
                 'newest-movies-row': new moviesRow(getGenreMovies, movieRowData)
         },
         watch:{

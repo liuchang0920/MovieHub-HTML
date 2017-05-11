@@ -14,7 +14,6 @@ class MovieRow {
                             <p class="row-movie-description">{{movie.description}}</p>\
                             <p>\
                                 <a v-on:click="goToMovieDetail(movie)" class="btn btn-primary" role="button">Detail</a>\
-                                <a href="#" class="btn btn-default" role="button">Button</a>\
                             </p>\
                         </div>\
                     </div>\
@@ -27,13 +26,14 @@ class MovieRow {
         };
         this.created = function() {
                 onCreatedMethod((movies)=>{
-                this.movies = movies;
+                    console.log(movies);
+                    this.movies = movies;
             });
         }
         this.methods = {
             goToMovieDetail: function(movie) {
                 console.log(movie);
-                router.push({path: 'movieDetail', query: movie});
+                router.push({path: '/movieDetail', query: movie});
             }
         };
         return this;

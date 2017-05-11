@@ -7,8 +7,7 @@ template: '\
         <!-- bread scrumb-->\
         <ol class="breadcrumb">\
             <li><a href="#">Home</a></li>\
-            <li><a href="">Genre</a></li>\
-            <li v-for="ge in genre"><a v-bind:href="\'/\' + ge">{{ge}}</a></li>\
+            <li v-for="ge in genre"><router-link :to="{path: \'/genre/\'+ge}">{{ge}}</router-link></li>\
             <li>{{movname}}</li>\
         </ol>\
         <!-- movies-->\

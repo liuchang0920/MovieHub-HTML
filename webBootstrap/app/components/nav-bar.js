@@ -43,7 +43,6 @@ Vue.component('nav-bar', {
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\
                     <ul class="nav navbar-nav">\
                         <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>\
-                        <!--         <li><a href="#">Link</a></li> -->\
                         <li class="dropdown">\
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>\
                             <ul class="dropdown-menu">\
@@ -62,15 +61,15 @@ Vue.component('nav-bar', {
                         <button type="submit" class="btn btn-default">Search</button>\
                     </form>\
                     <ul v-if="isLogin() == false" class="nav navbar-nav navbar-right">\
-                        <li><a id="loginbtn">Login</a></li>\
-                        <li><a id="registerbtn">Register</a></li>\
+                        <li><a id="loginbtn" href="#">Login</a></li>\
+                        <li><a id="registerbtn" href="#">Register</a></li>\
                     </ul>\
                     <ul v-else class="nav navbar-nav navbar-right">\
                     <li> <router-link to="/user" exact>{{ getUsername }}</router-link></li>\
                     <li ><a @click="logout" class="active" >Log out</a></li>\
                     </ul>\
-                    </div>\
-                    </div>\
+                </div>\
+            </div>\
     </nav>',
     data: ()=> {
         console.log(user);
