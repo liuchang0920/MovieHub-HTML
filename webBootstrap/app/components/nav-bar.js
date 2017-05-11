@@ -66,7 +66,7 @@ Vue.component('nav-bar', {
                         <li><a id="registerbtn">Register</a></li>\
                     </ul>\
                     <ul v-else class="nav navbar-nav navbar-right">\
-                    <li> <a v-text="getUsername"></a></li>\
+                    <li> <router-link to="/user" exact>{{ getUsername }}</router-link></li>\
                     <li ><a @click="logout" class="active" >Log out</a></li>\
                     </ul>\
                     </div>\
@@ -90,6 +90,7 @@ Vue.component('nav-bar', {
         },
         logout(){
             console.log("logout");
+            location.reload();
             setCookie("username", "", 1);
         }
     },
