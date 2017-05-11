@@ -17,4 +17,11 @@ router.get('/', (ctx, next)=> {
     });
 });
 
+router.get('/dist/main.min.css', (ctx, next)=> {
+    return send(ctx, './dist/main.min.css')
+});
+
+router.get('/dist/bundle.js', (ctx, next)=> {
+    return send(ctx, './dist/bundle.js')
+});
 module.exports = router;
