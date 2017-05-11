@@ -1,6 +1,44 @@
 import navBarComponent from './nav-bar.js';
 import footerComponent from './footer.js';
 import router from './../router/index';
+import DATA         from '../data/data';
+let $ = require('../lib/jquery');
+let ratingData = {
+  ratingroup: []
+};
+
+let tempmovid=''
+let getRating = (cb)=>{
+                $.ajax({
+                  method:'POST',
+                  contentType: 'application/json; charset=utf-8',
+                  dataType: 'json',
+                  crossDomain: true,
+                  url:'http://104.194.82.160:5000/db/groupRatingByMovie',
+                  data: JSON.stringify({movid: tempmovid}),
+                  success:(d)=>{
+                    console.log(d)
+                    ratingData.ratingroup = d.instance;
+
+                  }
+                })
+};
+
+let addRating = (cb, cusrate)=>{
+                $.ajax({
+                  method:'POST',
+                  contentType: 'application/json; charset=utf-8',
+                  dataType: 'json',
+                  crossDomain: true,
+                  url:'http://104.194.82.160:5000/db/addRating',
+                  data: JSON.stringify({movid: tempmovid, cusid: DATA.user.userInstance.cusid, rating: cusrate}),
+                  success:(d)=>{
+                    console.log(d)
+
+                  }
+                })
+  }
+
 export default {
 template: '\
     <div class="movie-detail">\
@@ -34,8 +72,8 @@ template: '\
                         <div>\
                             <h4>Movie Views</h4>\
                             <!--movie review charts-->\
-                            <div  v-for="i in 3">\
-                            <el-rate disabled></el-rate>\
+                            <div  v-for="i in rating.ratingroup">\
+                            <span>{{i.count}} give the rate</span><el-rate :max="10" disabled v-model="i.rating"></el-rate>\
                             </div>\
                             <canvas id="movieReview"></canvas>\
                         </div>\
@@ -43,7 +81,9 @@ template: '\
                 </div>\
                 <div class="col-md-12" style="padding-top: 40px;">\
                     <h4>Rate this Movie: \
-                    <el-rate></el-rate>\
+                    <div v-on:click="giveRate()">\
+                    <el-rate v-model="cusrate" :max="10"></el-rate>\
+                    </div>\
                     </h4>\
                 </div>\
                 <div class="col-md-12">\
@@ -66,12 +106,24 @@ template: '\
         </div>\
     </div>',
     data: function() {
-        console.log(this.$route.query)
+        console.log(DATA.user.userInstance.cusid)
+        tempmovid = this.$route.query.movid
+        getRating();
         return {
-            movie: this.$route.query
+            movie: this.$route.query,
+            rating: ratingData,
+            cusrate: ''
         };
     },
     created: ()=> {
+    },
+    methods:{
+        giveRate() {
+            console.log('test')
+            addRating((data)=>{
+                console.log(data)
+            }, this.cusrate);
+        }
     },
     components: {
         'nav-bar': navBarComponent,
