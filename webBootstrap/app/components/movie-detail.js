@@ -4,8 +4,6 @@ import router from './../router/index';
 export default {
 template: '\
     <div class="movie-detail">\
-    <nav-bar></nav-bar>\
-    <div class="movie-detail">\
         <!-- bread scrumb-->\
         <ol class="breadcrumb">\
             <li><a href="#">Home</a></li>\
@@ -65,7 +63,6 @@ template: '\
                 </div>\
             </div>\
         </div>\
-        <footer-component><footer-component>\
     </div>',
     data: function() {
         console.log(this.$route.query)

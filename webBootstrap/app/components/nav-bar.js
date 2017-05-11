@@ -1,9 +1,50 @@
-import router from './../router/index'
+import Vue               from '../lib/vue';
 
 let user = {
 };
+let ddd = {
+  genre: []
+};
+let $ = require('../lib/jquery');
 
-export default {
+let setCookie = function (cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+let getCookie = function (cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+let getGenre = (cb)=>{
+    $.ajax({
+      method:'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      crossDomain: true,
+      url:'http://104.194.82.160:5000/db/MovieGenres',
+      data: JSON.stringify(),
+      success:(d)=>{
+        ddd.genre = d.instance;
+
+      }
+    })
+}
+
+Vue.component('nav-bar', {
     template: '<!--navbar-->\
         <nav class="navbar navbar-default">\
             <div class="container-fluid">\
@@ -25,11 +66,8 @@ export default {
                         <li class="dropdown">\
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>\
                             <ul class="dropdown-menu">\
-                                <li><router-link to="/genre/Action" exact>Action</router-link></li>\
-                                <li><router-link to="/genre/Comedy">Comedy</router-link></li>\
-                                <li><router-link to="/genre/Documentary">Documentary</router-link></li>\
-                                <li><router-link to="/genre/Horror">Horror</router-link></li>\
-                                <li><router-link to="/genre/Romance">Romance</router-link></li>\
+                                <li><router-link :to="{path:\'/genre/\'+i.genre}" v-for="i in genre.genre">{{i.genre}}</router-link></li>\
+                               \
                             </ul>\
                         </li>\
                     </ul>\
@@ -39,20 +77,46 @@ export default {
                         </div>\
                         <button type="submit" class="btn btn-default">Search</button>\
                     </form>\
-                    <ul class="nav navbar-nav navbar-right">\
+                    <ul v-if="isLogin() == false" class="nav navbar-nav navbar-right">\
                         <li><a id="loginbtn">Login</a></li>\
                         <li><a id="registerbtn">Register</a></li>\
+                    </ul>\
+                    <ul v-else class="nav navbar-nav navbar-right">\
+                    <li> <a v-text="getUsername"></a></li>\
+                    <li ><a @click="logout" class="active" >Log out</a></li>\
                     </ul>\
                     </div>\
                     </div>\
     </nav>',
-    data: ()=> {
-        console.log(user);
+    data: function() {
+        getGenre()
         return {
             user: user,
-            category:'test'
+            category:'test',
+            username:'',
+            genre: ddd
         }
     },
     methods: {
+        isLogin(){
+            var username = getCookie("username");
+            if (username != "") {
+                console.log("login username" + username);
+                return true;
+            }else return false;
+        },
+        logout(){
+            console.log("logout");
+            setCookie("username", "", 1);
+        }
+    },
+    computed: {
+        getUsername(){
+            let cookieusername = getCookie("username");
+            console.log("cookie username:" + cookieusername);
+            this.username = cookieusername;
+            console.log("username:" + this.username);
+            return cookieusername;
+        }
     }
-};
+});

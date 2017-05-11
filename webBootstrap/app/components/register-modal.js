@@ -26,7 +26,7 @@ export default {
                                 <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Repeat Password</label>\
                                 <input type="text" class="form-control" id="psw" placeholder="Enter password">\
                             </div>\
-                            <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Register</button>\
+                            <button type="button" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Register</button>\
                         </form>\
                     </div>\
                     <div class="modal-footer">\

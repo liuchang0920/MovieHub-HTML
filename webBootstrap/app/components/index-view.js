@@ -38,7 +38,6 @@ let getNewestMovies = (cb)=>{
 
 export default {
     template:'<div class="index-view">\
-        <nav-bar></nav-bar>\
         <!--login modal-->\
         <login-modal></login-modal>\
         <!--register modal-->\
@@ -95,15 +94,12 @@ export default {
               </div>\
             </div>\
         </div>\
-        <footer-component></footer-component>\
     </div>',
     components: {
-        'nav-bar':navBarComponent,
         'login-modal': loginComponent,
         'register-modal': registerComponent,
         'category-modal' : categoryComponent,
         'carousel': carouselComponent,
-        'footer-component': footerComponent,
         // 'recommend-movies-row': new moviesRow(getNewestMovies, {
         //     title: 'Recommend Movies'
         // }),
