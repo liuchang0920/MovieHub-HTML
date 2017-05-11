@@ -111,6 +111,8 @@ export default {
                     console.log($("#loginModal").modal);
                     $("#loginModal").hide();
                     $('#loginModal').toggleClass('in');
+                    $('body').toggleClass('modal-open');
+
                     $('.modal-backdrop').hide();
                     $("#notificationModal").show();
                     $('#notificationModal').toggleClass('in');
