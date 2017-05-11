@@ -1,5 +1,6 @@
 //should define a function to login
 let $ = require('../lib/jquery');
+import DATA from'../data/data';
 let loginRequest = (cb, username, password)=>{
     //check session
     //login
@@ -118,8 +119,8 @@ export default {
                         $("#notificationModal").hide();
                     }, 1000);
                     setCookie("username", this.cusname, 1);
+                    DATA.user.userInstance = data.instance;
                     location.reload();
-
                     //reload page.
                 }else if(status == 400) {
                     console.log("username or password not correct");
