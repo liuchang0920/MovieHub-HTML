@@ -1,5 +1,5 @@
 let $ = require('../lib/jquery');
-let ddd = {
+let genreData = {
   genre: []
 };
 
@@ -12,7 +12,7 @@ let getGenre = (cb)=>{
                   url:'http://104.194.82.160:5000/db/MovieGenres',
                   data: JSON.stringify(),
                   success:(d)=>{
-                    ddd.genre = d.instance;
+                    genreData.genre = d.instance;
 
                   }
                 })
@@ -35,9 +35,9 @@ export default {
             </div>',
             data: function() {
               getGenre()
-              console.log(ddd)
+              console.log(genreData)
               return {
-                genre:ddd
+                genre:genreData
               };
             }
 }
