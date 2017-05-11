@@ -120,8 +120,7 @@ export default {
                     }, 1000);
                     setCookie("username", this.cusname, 1);
                     DATA.user.userInstance = data.instance;
-                    console.log(DATA);
-
+                    location.reload();
                     //reload page.
                 }else if(status == 400) {
                     console.log("username or password not correct");

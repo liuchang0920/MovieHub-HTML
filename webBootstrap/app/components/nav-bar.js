@@ -1,5 +1,13 @@
 import Vue               from '../lib/vue';
 import DATA from'../data/data';
+
+let user = {
+};
+let genre = {
+  genre: []
+};
+let $ = require('../lib/jquery');
+
 let setCookie = function (cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -23,9 +31,44 @@ let getCookie = function (cname) {
 }
 
 
-setTimeout(()=>{
-    console.log(DATA);
-}, 6000);
+
+let getGenre = (cb)=>{
+    $.ajax({
+      method:'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      crossDomain: true,
+      url:'http://104.194.82.160:5000/db/MovieGenres',
+      data: JSON.stringify(),
+      success:(d)=>{
+        genre.genre = d.instance;
+
+      }
+    })
+};
+
+let setCookie = function (cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+let getCookie = function (cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+
+}
 
 Vue.component('nav-bar', {
     template: '<!--navbar-->\
@@ -48,11 +91,8 @@ Vue.component('nav-bar', {
                         <li class="dropdown">\
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>\
                             <ul class="dropdown-menu">\
-                                <li><router-link to="/genre/Action" exact>Action</router-link></li>\
-                                <li><router-link to="/genre/Comedy">Comedy</router-link></li>\
-                                <li><router-link to="/genre/Documentary">Documentary</router-link></li>\
-                                <li><router-link to="/genre/Horror">Horror</router-link></li>\
-                                <li><router-link to="/genre/Romance">Romance</router-link></li>\
+                                <li><router-link :to="{path:\'/genre/\'+i.genre}" v-for="i in genre.genre">{{i.genre}}</router-link></li>\
+                               \
                             </ul>\
                         </li>\
                     </ul>\
@@ -73,12 +113,14 @@ Vue.component('nav-bar', {
                 </div>\
             </div>\
     </nav>',
-    data: ()=> {
+    data: function() {
+        getGenre();
         return {
             user: DATA.user,
             category:'test',
-            username:''
-        }
+            username:'',
+            genre: genre
+        };
     },
     methods: {
         isLogin(){
