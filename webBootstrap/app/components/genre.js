@@ -86,7 +86,7 @@ export default {
                 'newest-movies-row': new moviesRow(getGenreMovies, movieRowData)
         },
         watch:{
-                '$route' (to, from) {
+                '$route': function(to, from) {
                     location.reload();
                     page=1;
                 }
