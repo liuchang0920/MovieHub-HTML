@@ -6,6 +6,7 @@ const app = new Vue({
     router
 }).$mount('#app');
 
+
 let getGenre = ()=>{
     $.ajax({
         method:'GET',

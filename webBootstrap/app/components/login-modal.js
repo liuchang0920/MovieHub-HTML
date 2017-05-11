@@ -118,6 +118,7 @@ export default {
                         $("#notificationModal").hide();
                     }, 1000);
                     setCookie("username", this.cusname, 1);
+                    location.reload();
 
                     //reload page.
                 }else if(status == 400) {
