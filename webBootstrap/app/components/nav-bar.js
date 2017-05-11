@@ -1,5 +1,4 @@
-import router from './../router/index'
-
+import Vue               from '../lib/vue';
 
 let user = {
 };
@@ -26,7 +25,7 @@ let getCookie = function (cname) {
     return "";
 }
 
-export default {
+Vue.component('nav-bar', {
     template: '<!--navbar-->\
         <nav class="navbar navbar-default">\
             <div class="container-fluid">\
@@ -103,4 +102,4 @@ export default {
             return cookieusername;
         }
     }
-};
+});
