@@ -1,8 +1,9 @@
 import Vue               from '../lib/vue';
+import DATA from'../data/data';
 
 let user = {
 };
-let ddd = {
+let genre = {
   genre: []
 };
 let $ = require('../lib/jquery');
@@ -30,6 +31,7 @@ let getCookie = function (cname) {
 }
 
 
+
 let getGenre = (cb)=>{
     $.ajax({
       method:'GET',
@@ -39,10 +41,11 @@ let getGenre = (cb)=>{
       url:'http://104.194.82.160:5000/db/MovieGenres',
       data: JSON.stringify(),
       success:(d)=>{
-        ddd.genre = d.instance;
+        genre.genre = d.instance;
 
       }
     })
+};
 
 let setCookie = function (cname, cvalue, exdays) {
     var d = new Date();
@@ -99,27 +102,25 @@ Vue.component('nav-bar', {
                         </div>\
                         <button type="submit" class="btn btn-default">Search</button>\
                     </form>\
-                    <ul v-if="isLogin() == false" class="nav navbar-nav navbar-right">\
+                    <ul v-if="user.userInstance.cusname === undefined" class="nav navbar-nav navbar-right">\
                         <li><a id="loginbtn" href="#">Login</a></li>\
                         <li><a id="registerbtn" href="#">Register</a></li>\
                     </ul>\
                     <ul v-else class="nav navbar-nav navbar-right">\
-                    <li> <router-link to="/user" exact>{{ getUsername }}</router-link></li>\
+                    <li> <router-link to="/user" exact>{{ user.userInstance.cusname }}</router-link></li>\
                     <li ><a @click="logout" class="active" >Log out</a></li>\
                     </ul>\
                 </div>\
             </div>\
     </nav>',
     data: function() {
-        getGenre()
+        getGenre();
         return {
-            user: user,
+            user: DATA.user,
             category:'test',
-
             username:'',
-            genre: ddd
-
-        }
+            genre: genre
+        };
     },
     methods: {
         isLogin(){
@@ -131,9 +132,7 @@ Vue.component('nav-bar', {
         },
         logout(){
             console.log("logout");
-
             location.reload();
-
             setCookie("username", "", 1);
         }
     },

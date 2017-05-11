@@ -26,13 +26,11 @@ class MovieRow {
         };
         this.created = function() {
                 onCreatedMethod((movies)=>{
-                    console.log(movies);
                     this.movies = movies;
             });
         }
         this.methods = {
             goToMovieDetail: function(movie) {
-                console.log(movie);
                 router.push({path: '/movieDetail', query: movie});
             }
         };
