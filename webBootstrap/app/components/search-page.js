@@ -76,9 +76,10 @@ export default {
     },
     methods: {
         nextPage() {
+            let vueComponent = this.$children[0];
+            if (vueComponent.movies.length < 20) return;
             previous.push(movid);
             movid = lastId;
-            let vueComponent = this.$children[0];
             vueComponent.movies = [];
             getSearchMovies((movie)=> {
                 vueComponent.movies = movie;
@@ -86,6 +87,7 @@ export default {
             document.getElementById('app').scrollIntoView();
         },
         previousPage() {
+            if (movid == 0) return;
             if (previous == []) movid = 0;
             else movid = previous.pop();
             let vueComponent = this.$children[0];
