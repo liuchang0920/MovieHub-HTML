@@ -5,6 +5,9 @@ const DATA = {
     },
     genre: {
         genreInstance: {}
+    },
+    recommend: {
+    	recommendMovieInstance:{}
     }
 };
 

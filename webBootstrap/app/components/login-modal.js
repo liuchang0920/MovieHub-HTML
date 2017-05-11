@@ -45,6 +45,33 @@ let getCookie = function (cname) {
     return "";
 }
 
+let getRecommandMovie = (cb)=>{
+    // get  Recommend Movie
+    $.ajax({
+        method:'POST',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        crossDomain: true,
+        url:'http://104.194.82.160:5000/db/getRecommendMovies',
+        data: JSON.stringify({cusid: 6001}),
+        success: (data)=>{
+            let newestMovies = data.instances;
+            newestMovies.map((movie)=> {
+                movie.movScreenshotUrl = movie.movScreenshotUrl.split('|');
+                movie.genre = movie.genre.split('|');
+                movie.actor = movie.actor.split('|');
+                movie.movScreenshotUrl.pop();
+                movie.genre.pop();
+                movie.actor.pop();
+            });
+            cb(newestMovies);
+        },
+        error: (err)=> {
+            console.log('Error: ', err);
+        }
+    });
+};
+
 
 export default {
 	template:'<div>\
@@ -111,6 +138,7 @@ export default {
                     console.log($("#loginModal").modal);
                     $("#loginModal").hide();
                     $('#loginModal').toggleClass('in');
+                    $('body').toggleClass('modal-open');
                     $('.modal-backdrop').hide();
                     $("#notificationModal").show();
                     $('#notificationModal').toggleClass('in');
@@ -120,6 +148,7 @@ export default {
                     }, 1000);
                     setCookie("username", this.cusname, 1);
                     DATA.user.userInstance = data.instance;
+                    //get recommend movie there. 
                     //reload page.
                 }else if(status == 400) {
                     console.log("username or password not correct");

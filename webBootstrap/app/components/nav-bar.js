@@ -113,9 +113,14 @@ Vue.component('nav-bar', {
             console.log("logout");
             location.reload();
             setCookie("username", "", 1);
+            DATA.user.userInstance = {};
+            this.goToIndexView();
         },
         searchMovies() {
             router.push({path: '/search/' + this.searchText})
+        },
+        goToIndexView() {
+                router.push({path: '/'});
         }
     },
     computed: {
