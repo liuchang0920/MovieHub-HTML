@@ -4,6 +4,8 @@ import movieDetail       from './../components/movie-detail';
 import indexComponent    from './../components/index-view';
 import genre   			 from './../components/genre';
 import searchPage        from './../components/search-page';
+import ElementUI from 'element-ui'
+Vue.use(ElementUI)
 
 Vue.use(VueRouter);
 const routes = [
