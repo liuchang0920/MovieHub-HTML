@@ -5,6 +5,8 @@ import indexComponent    from './../components/index-view';
 import genre   			 from './../components/genre';
 import searchPage        from './../components/search-page';
 import userView 		 from './../components/user-view';
+import ElementUI from 'element-ui'
+Vue.use(ElementUI);
 
 Vue.use(VueRouter);
 const routes = [
