@@ -1,8 +1,5 @@
 import Vue               from '../lib/vue';
-
-let user = {
-};
-
+import DATA from'../data/data';
 let setCookie = function (cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -24,6 +21,11 @@ let getCookie = function (cname) {
     }
     return "";
 }
+
+
+setTimeout(()=>{
+    console.log(DATA);
+}, 6000);
 
 Vue.component('nav-bar', {
     template: '<!--navbar-->\
@@ -60,21 +62,20 @@ Vue.component('nav-bar', {
                         </div>\
                         <button type="submit" class="btn btn-default">Search</button>\
                     </form>\
-                    <ul v-if="isLogin() == false" class="nav navbar-nav navbar-right">\
+                    <ul v-if="user.userInstance.cusname === undefined" class="nav navbar-nav navbar-right">\
                         <li><a id="loginbtn" href="#">Login</a></li>\
                         <li><a id="registerbtn" href="#">Register</a></li>\
                     </ul>\
                     <ul v-else class="nav navbar-nav navbar-right">\
-                    <li> <router-link to="/user" exact>{{ getUsername }}</router-link></li>\
+                    <li> <router-link to="/user" exact>{{ user.userInstance.cusname }}</router-link></li>\
                     <li ><a @click="logout" class="active" >Log out</a></li>\
                     </ul>\
                 </div>\
             </div>\
     </nav>',
     data: ()=> {
-        console.log(user);
         return {
-            user: user,
+            user: DATA.user,
             category:'test',
             username:''
         }
