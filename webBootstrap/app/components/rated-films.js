@@ -50,7 +50,7 @@ let getRatedMovies = (cb) => {
 export default {
 	template:'<div class="col-md-10">\
                <div class="row">\
-                <div v-for="item in filmRatings" class="col-sm-5 col-md-3" >\
+                <div v-for="item in filmRatings" class="col-sm-5 col-md-4" >\
                     <div class="thumbnail">\
                       <img :src="item.movScreenshotUrl[0]" alt="..." style="height: 250px;">\
                       <div class="caption">\
@@ -58,18 +58,7 @@ export default {
                         <p v-text="item.movyear"></p>\
                         <p>Genre: <br>Comedy, Sport</p>\
                         <p>Rate: \
-                        <select class="example" v-model="item.rating" disabled="disabled">\
-                          <option value="1" >1</option>\
-                          <option value="2" >2</option>\
-                          <option value="3" >3</option>\
-                          <option value="4" >4</option>\
-                          <option value="5" >5</option>\
-                          <option value="6" >6</option>\
-                          <option value="7" >7</option>\
-                          <option value="8" >8</option>\
-                          <option value="9" >9</option>\
-                          <option value="10" >10</option>\
-                        </select>\
+                        <el-rate v-model="item.rating" :max="10"></el-rate>\
                         </p>\
                       </div>\
                     </div>\

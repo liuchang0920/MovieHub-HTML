@@ -73,58 +73,13 @@ export default {
         <register-modal></register-modal>\
         <!--carousel-->\
         <carousel></carousel>\
-        <newest-movies-row></newest-movies-row>\
-        <div class="col-md-2" style="padding-top: 40px;">\
-        <!-- panel movie category-->\
+        <recommend-movies-row  v-if="user.userInstance.cusname != undefined" ></recommend-movies-row>\
+        <div  v-if="user.userInstance.cusname != undefined" class="col-md-2" style="padding-top: 40px;">\
             <category-modal></category-modal>\
-            <!--popular movies-->\
-            <div class="panel-group" id="accordion">\
-              <div class="panel panel-default">\
-                <div class="panel-heading">\
-                  <h4 class="panel-title">\
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">\
-                    Collapsible Group 1</a>\
-                  </h4>\
-                </div>\
-                <div id="collapse1" class="panel-collapse collapse in">\
-                  <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,\
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad\
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\
-                  commodo consequat.</div>\
-                </div>\
-              </div>\
-              <div class="panel panel-default">\
-                <div class="panel-heading">\
-                  <h4 class="panel-title">\
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">\
-                    Collapsible Group 2</a>\
-                  </h4>\
-                </div>\
-                <div id="collapse2" class="panel-collapse collapse">\
-                  <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,\
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad\
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\
-                  commodo consequat.</div>\
-                </div>\
-              </div>\
-              <div class="panel panel-default">\
-                <div class="panel-heading">\
-                  <h4 class="panel-title">\
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">\
-                    Collapsible Group 3</a>\
-                  </h4>\
-                </div>\
-                <div id="collapse3" class="panel-collapse collapse">\
-                  <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,\
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad\
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\
-                  commodo consequat.</div>\
-                </div>\
-              </div>\
-            </div>\
         </div>\
-        <div v-if="user.userInstance.cusname != undefined" >\
-          <recommend-movies-row></recommend-movies-row>\
+        <newest-movies-row></newest-movies-row>\
+        <div  v-if="user.userInstance.cusname == undefined" class="col-md-2" style="padding-top: 40px;">\
+            <category-modal></category-modal>\
         </div>\
     </div>',
     components: {
