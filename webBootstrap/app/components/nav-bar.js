@@ -1,5 +1,6 @@
 import Vue               from '../lib/vue';
-import DATA from'../data/data';
+import router            from '../router/index';
+import DATA              from '../data/data';
 
 let user = {
 };
@@ -7,29 +8,6 @@ let genre = {
   genre: []
 };
 let $ = require('../lib/jquery');
-
-let setCookie = function (cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-let getCookie = function (cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
 
 
 let getGenre = (cb)=>{
@@ -98,9 +76,9 @@ Vue.component('nav-bar', {
                     </ul>\
                     <form class="nav navbar-nav navbar-form">\
                         <div class="form-group">\
-                            <input type="text" class="form-control" placeholder="Search a movie" size="20">\
+                            <input type="text" class="form-control" placeholder="Search a movie" size="20" v-model="searchText">\
                         </div>\
-                        <button type="submit" class="btn btn-default">Search</button>\
+                        <button type="submit" class="btn btn-default" v-on:click="searchMovies()">Search</button>\
                     </form>\
                     <ul v-if="user.userInstance.cusname === undefined" class="nav navbar-nav navbar-right">\
                         <li><a id="loginbtn" href="#">Login</a></li>\
@@ -119,6 +97,7 @@ Vue.component('nav-bar', {
             user: DATA.user,
             category:'test',
             username:'',
+            searchText: '',
             genre: genre
         };
     },
@@ -134,6 +113,9 @@ Vue.component('nav-bar', {
             console.log("logout");
             location.reload();
             setCookie("username", "", 1);
+        },
+        searchMovies() {
+            router.push({path: '/search/' + this.searchText})
         }
     },
     computed: {
