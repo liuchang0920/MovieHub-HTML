@@ -6,7 +6,8 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack-dev-server",
     "dev-run": "nodemon app.js dev",
-    "dist-run": "./node_modules/.bin/webpack | node app.js dist"
+    "dist-run": "./node_modules/.bin/webpack | node app.js dist",
+    "start": "node app.js dist"
   },
   "author": "MovieHub",
   "license": "MIT",
