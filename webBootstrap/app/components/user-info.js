@@ -1,6 +1,6 @@
 //should define a function to login
 let $ = require('../lib/jquery');
-
+import DATA from'../data/data';
 
 let setCookie = function (cname, cvalue, exdays) {
     var d = new Date();
@@ -45,17 +45,15 @@ export default {
     },
     computed: {
          getUsername: function (){
-            let cookieusername = getCookie("username");
-            console.log("cookie username:" + cookieusername);
-            this.username = cookieusername;
+            //let cookieusername = getCookie("username");
+            this.username = DATA.user.userInstance.cusname;
             console.log("username:" + this.username);
-            return cookieusername;
+            return this.username;
         },
         getEmail: function (){
-            let cookieemail = getCookie("email");
-            console.log("cookie email:" + cookieemail);
-            this.email = cookieemail;
-            return cookieemail;
+            this.email = DATA.user.userInstance.cusemail;
+            console.log("cookie email:" + this.email);
+            return this.email;
         }
     }
 }
