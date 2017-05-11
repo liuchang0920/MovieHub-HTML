@@ -29,6 +29,7 @@ let getCookie = function (cname) {
     return "";
 }
 
+
 let getGenre = (cb)=>{
     $.ajax({
       method:'GET',
@@ -42,6 +43,28 @@ let getGenre = (cb)=>{
 
       }
     })
+
+let setCookie = function (cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+let getCookie = function (cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+
 }
 
 Vue.component('nav-bar', {
@@ -62,7 +85,6 @@ Vue.component('nav-bar', {
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\
                     <ul class="nav navbar-nav">\
                         <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>\
-                        <!--         <li><a href="#">Link</a></li> -->\
                         <li class="dropdown">\
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>\
                             <ul class="dropdown-menu">\
@@ -78,23 +100,25 @@ Vue.component('nav-bar', {
                         <button type="submit" class="btn btn-default">Search</button>\
                     </form>\
                     <ul v-if="isLogin() == false" class="nav navbar-nav navbar-right">\
-                        <li><a id="loginbtn">Login</a></li>\
-                        <li><a id="registerbtn">Register</a></li>\
+                        <li><a id="loginbtn" href="#">Login</a></li>\
+                        <li><a id="registerbtn" href="#">Register</a></li>\
                     </ul>\
                     <ul v-else class="nav navbar-nav navbar-right">\
-                    <li> <a v-text="getUsername"></a></li>\
+                    <li> <router-link to="/user" exact>{{ getUsername }}</router-link></li>\
                     <li ><a @click="logout" class="active" >Log out</a></li>\
                     </ul>\
-                    </div>\
-                    </div>\
+                </div>\
+            </div>\
     </nav>',
     data: function() {
         getGenre()
         return {
             user: user,
             category:'test',
+
             username:'',
             genre: ddd
+
         }
     },
     methods: {
@@ -107,6 +131,9 @@ Vue.component('nav-bar', {
         },
         logout(){
             console.log("logout");
+
+            location.reload();
+
             setCookie("username", "", 1);
         }
     },
