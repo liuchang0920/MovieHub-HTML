@@ -1,5 +1,23 @@
+let $ = require('../lib/jquery');
+let getCarouselMovies = (cb)=>{
+    $.ajax({
+        method:'POST',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        crossDomain: true,
+        url:'http://104.194.82.160:5000/db/getNewestMovies',
+        data: JSON.stringify({count: 4}),
+        success: (data)=>{
+            cb(data);
+        },
+        error: (err)=> {
+            console.log('Error: ', err);
+        }
+    });
+}
+
 export default {
-    template: '<div id="myCarousel" class="carousel slide" data-ride="carousel">\
+    template: '<div id="myCarousel" class="container carousel slide" data-ride="carousel">\
         <!-- Indicators -->\
         <ol class="carousel-indicators">\
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>\
@@ -9,14 +27,8 @@ export default {
         </ol>\
         <!-- Wrapper for slides -->\
         <div class="carousel-inner" role="listbox">\
-            <div class="item active">\
-                <img src="image/slide1.svg" alt="Chania">\
-            </div>\
-            <div class="item">\
-                <img src="image/slide2.svg" alt="Chania">\
-            </div>\
-            <div class="item">\
-                <img src="image/slide3.svg" alt="Flower">\
+            <div  v-for="(element, index) in carouselMovieArray"  :class="{item: true , active: index == 0}" >\
+                <img :src="element.movScreenshotUrl[0]"  style="height:500px; max-width:100%" class="img-rounded">\
             </div>\
         </div>\
         <!-- Left and right controls -->\
@@ -28,5 +40,37 @@ export default {
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>\
             <span class="sr-only">Next</span>\
         </a>\
-    </div>'
+    </div>',
+    data: function(){
+        return {
+            carouselMovieArray:[]
+        }
+    },
+    created: function () {
+        this.carouselMovies();
+    },
+    methods: {
+        carouselMovies() {
+            var temp = this;
+            getCarouselMovies((data)=>{
+                status = data.status;
+                if(status == 200){
+                    let carousel = data.instances;
+                    carousel.map((movie)=> {
+                            movie.movScreenshotUrl = movie.movScreenshotUrl.split('|');
+                            movie.genre = movie.genre.split('|');
+                            movie.actor = movie.actor.split('|');
+                            movie.movScreenshotUrl.pop();
+                            movie.genre.pop();
+                            movie.actor.pop();
+                    });
+                    temp.carouselMovieArray = carousel;
+                    console.log("length:"+temp.carouselMovieArray.length);
+                    console.log(temp.carouselMovieArray[0].movScreenshotUrl[0]);
+                }else{
+                    console.log("error geting carousel movies");
+                }
+            });
+        }
+    } 
 };

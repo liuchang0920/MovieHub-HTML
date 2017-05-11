@@ -28,6 +28,12 @@
     }
 }
 
+.carousel-inner {
+    img {
+        margin: 0 auto;
+    }
+}
+
 /* tiny devices (tablets, 768px down) */
 @media (min-width: 0px) {
     .movie-detail {

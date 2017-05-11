@@ -14,10 +14,10 @@
             <router-view>
             </router-view>
         </div>
-        <script src='<%=staticPath%>bundle.js'></script>
         <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src='<%=staticPath%>bundle.js'></script>
         <!--script for login and register modal-->
         <script>
         $(document).ready(function(){
@@ -27,21 +27,21 @@
         $("#registerbtn").click(function(){
         $("#registerModal").modal();
         });
-        $('#loginBtnajax').click(
-        function(){
-        alert("loginBtnajax");
-        //add listener: login register
-        $.ajax({
-        type: 'POST',
-        url: 'http://104.194.82.160:5000/login',
-        contentType: 'json',
-        dataType: "json",
-        data: {'cusname':'name', 'cuspassword':'password' },
-        success: function(msg){alert(JSON.stringify(msg)); console.log(msg+'success');},
-        error: function(msg){alert(JSON.stringify(msg)); console.log(msg+'fail'); }
-        });
-        }
-        );
+        // $('#loginBtnajax').click(
+        // function(){
+        // alert("loginBtnajax");
+        // //add listener: login register
+        // $.ajax({
+        // type: 'POST',
+        // url: 'http://104.194.82.160:5000/login',
+        // contentType: 'json',
+        // dataType: "json",
+        // data: {'cusname':'name', 'cuspassword':'password' },
+        // success: function(msg){alert(JSON.stringify(msg)); console.log(msg+'success');},
+        // error: function(msg){alert(JSON.stringify(msg)); console.log(msg+'fail'); }
+        // });
+        // }
+        // );
         });
         </script>
     </body>
