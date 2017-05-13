@@ -38,13 +38,14 @@ let getNewestMovies = (cb)=>{
 
 let getRecommandMovie = (cb)=>{
     // get  Recommend Movie
+    console.log(DATA);
     $.ajax({
         method:'POST',
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         crossDomain: true,
         url:'http://104.194.82.160:5000/db/getRecommendMovies',
-        data: JSON.stringify({userId: DATA.user.cusid}),
+        data: JSON.stringify({userId: DATA.user.userInstance.cusid}),
         success: (data)=>{
             console.log("recommend size:" + data.instances.length);
             let recommendMovies = data.instances;
